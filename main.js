@@ -10,3 +10,11 @@ SnapExtensions.primitives.set("ide_cat_getcategories()->string[]",function(name)
 SnapExtensions.primitives.set("ide_cat_removecategory(string categoryname)->boolean",function(name){
   return world.childThatIsA(IDE_Morph).scene.customCategories.delete(name)
 })
+SnapExtenions.primitives.set("ide_cat_refreshcategories()",function(){
+    var ide = world.childThatIsA(IDE_Morph)
+    ide.createCategories();
+    ide.categories.refreshEmpty();
+    ide.createPaletteHandle();
+    ide.categories.fixLayout();
+    ide.fixLayout();
+})
