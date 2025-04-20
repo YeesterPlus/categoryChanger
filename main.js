@@ -5,7 +5,7 @@ SnapExtensions.primitives.set("ide_cat_getcategory(string categoryname)->Color",
   return world.childThatIsA(IDE_Morph).scene.customCategories.get(name)
 })
 SnapExtensions.primitives.set("ide_cat_getcategories()->string[]",function(name){
-  return world.childThatIsA(IDE_Morph).scene.customCategories.keys()
+  return new List([...world.childThatIsA(IDE_Morph).scene.customCategories.keys()])
 })
 SnapExtensions.primitives.set("ide_cat_removecategory(string categoryname)->boolean",function(name){
   return world.childThatIsA(IDE_Morph).scene.customCategories.delete(name)
