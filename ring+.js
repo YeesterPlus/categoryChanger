@@ -1,4 +1,4 @@
-SnapExtensions.primitives.set("getVariableFrame(Context ctx)->Object%any[][2]",function(ctx){
+SnapExtensions.primitives.set("ring_getVariableFrame(Context ctx)->Object%any[][2]",function(ctx){
   var outList = new List()
   outList.at = function(idx){
     var kvl = new List(Object.entries(ctx.variables.vars)[idx-1])
@@ -26,10 +26,13 @@ SnapExtensions.primitives.set("getVariableFrame(Context ctx)->Object%any[][2]",f
   outList.ref=ctx.variables
   return outList
 })
-SnapExtensions.primitives.set("setVariableFrame(Context ctx,Object%any var[][2])",function(ctx,varf){
+SnapExtensions.primitives.set("ring_setVariableFrame(Context ctx,Object%any var[][2])",function(ctx,varf){
   if (varf instanceof VariableFrame){
     ctx.variables = varf;
     return;
   }
   ctx.variables = varf.ref
+})
+SnapExtensions.primitives.set("ring_push(Context ctx)",function(ctx,proc){
+  proc.pushContext(ctx)
 })
